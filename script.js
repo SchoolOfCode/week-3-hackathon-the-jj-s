@@ -5,11 +5,13 @@ const generateMemeBtn = document.getElementById("meme-button")
 //we need an async await function for fetching the API
 async function fetchMemeApi() {
     try {
-        const url = "https://meme-api.com/gimme";
+        const subreddit = 'ProgrammerHumor'
+        const url = `https://meme-api.com/gimme/${subreddit}`;
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
         
+        // refractor this into seperate function
             memeTitle.innerText = data.title;
             memeImage.src = data.url;
             memeImage.alt = data.title;
@@ -34,4 +36,4 @@ generateMemeBtn.addEventListener("click", fetchMemeApi);
 
 //Things to fix
     // nsfw memes still appearing randomly
-    // add loading page or any loading
+    // 
